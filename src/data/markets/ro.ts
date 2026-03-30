@@ -8,7 +8,7 @@ export const roMarket = {
     url: "https://www.elevoncontrols.ro",
     domain: "elevoncontrols.ro",
     email: "info@elevoncontrols.ro",
-    phone: "+40 31 229 5401",
+    phone: "0728 442 402",
     mobile: "+40 744 168 663",
     address: "Bucuresti, Romania",
     location: "Bucuresti, Romania",
@@ -40,10 +40,10 @@ export const roMarket = {
   },
   home: {
     title: "Programare PLC si suport de automatizare pentru statii de pompare",
-    description: "Sprijinim constructori de tablouri, integratori de sisteme si contractori industriali din Romania cu programare PLC, proiectare si punere in functiune.",
+    description: "Colaboram cu producatori de tablouri electrice, integratori de sisteme si contractori industriali din Romania, oferind suport pentru programare PLC, proiectare si punere in functiune.",
     eyebrow: "Automatizari Industriale si Inginerie PLC",
     headline: "Programare PLC si suport de automatizare pentru statii de pompare si aplicatii industriale",
-    heroCopy: "Sprijinim integratori de sisteme, constructori de tablouri si contractori din Romania cu programare PLC, proiectare de tablouri si suport la punerea in functiune, livrate clar si la timp.",
+    heroCopy: "Colaboram cu integratori de sisteme, producatori de tablouri electrice si contractori din Romania, oferind suport pentru programare PLC, proiectare de tablouri si punere in functiune, clar si la timp.",
     primaryCta: "Solicita suport PLC",
     secondaryCta: "Programeaza o discutie",
     focusedExpertiseLabel: "Expertiza Aplicata",
@@ -61,7 +61,7 @@ export const roMarket = {
     servicesTitle: "Servicii de inginerie pentru automatizari",
     specialisationEyebrow: "Specializare",
     specialisationTitle: "Specialisti in automatizari pentru pompe si infrastructura de apa",
-    specialisationBody: "Avem experienta practica in statii de pompare si infrastructura de apa, ajutand clientii sa livreze sisteme de control fiabile, usor de exploatat si intretinut.",
+    specialisationBody: "Avem experienta practica in statii de pompare si infrastructura de apa, ajutand echipele implicate in proiect sa livreze sisteme de control fiabile, usor de exploatat si intretinut.",
     specialisationItems: ["Statii de pompare", "Sisteme de crestere presiune", "Aplicatii de apa uzata", "Control de nivel si debit", "Protectii pentru pompe"],
     whyEyebrow: "De Ce Noi",
     whyTitle: "De ce lucreaza companiile cu noi",
@@ -79,13 +79,13 @@ export const roMarket = {
     heroEyebrow: "Despre noi",
     heroTitle: "Inginerie de automatizare orientata spre livrare practica",
     heroDescription: "Elevon Romania sprijina proiecte industriale cu focus pe programare PLC, proiectare de tablouri, dezvoltare HMI/SCADA si punere in functiune.",
-    intro: "Lucram in principal cu constructori de tablouri, integratori de sisteme si contractori industriali, oferind suport tehnic care ajuta echipele sa livreze proiecte fara a creste permanent numarul de ingineri interni.",
+    intro: "Lucram in principal cu producatori de tablouri electrice, integratori de sisteme si contractori industriali, oferind suport tehnic care ajuta echipele sa livreze proiecte fara a creste permanent numarul de ingineri interni.",
     sections: [
       {
         eyebrow: "Abordarea noastra",
-        title: "Comunicare clara, solutii practice, suport de incredere",
+        title: "Comunicare clara, implementare practica, suport de incredere",
         body: [
-          "Abordarea noastra este directa: comunicare clara, solutii practice si suport tehnic pe care te poti baza.",
+          "Abordarea noastra este directa: comunicare clara, implementare practica si suport tehnic pe care te poti baza.",
           "Ne concentram pe rezultate care se integreaza usor in proiectele existente, fara complexitate inutila sau intarzieri."
         ],
         muted: true
@@ -95,22 +95,22 @@ export const roMarket = {
         title: "Experienta solida in aplicatii cu pompe si infrastructura de apa",
         body: [
           "Avem experienta in sisteme de pompare, statii de crestere presiune, aplicatii de apa uzata si logica de control si protectie.",
-          "Aceasta experienta ne ajuta sa livram solutii care nu sunt doar functionale, ci si potrivite pentru exploatarea reala din teren."
+          "Aceasta experienta ne ajuta sa dezvoltam si sa implementam automatizari care nu sunt doar functionale, ci si potrivite pentru exploatarea reala din teren."
         ]
       },
       {
         eyebrow: "Cum lucram",
         title: "Suport extern de automatizare pe tot parcursul proiectului",
         body: [
-          "Actionam ca partener extern de inginerie, oferind programare PLC, proiectare de sistem, dezvoltare HMI si suport la punere in functiune.",
-          "Fie remote, fie alaturi de echipa ta, obiectivul nostru este sa oferim contributie tehnica stabila si predictibila pe toata durata proiectului."
+          "De cele mai multe ori, lucram ca partener tehnic in cadrul echipei existente, oferind programare PLC, proiectare de sistem, dezvoltare HMI si suport la punere in functiune.",
+          "Fie remote, fie alaturi de echipa ta, obiectivul nostru este sa oferim contributie tehnica stabila si predictibila pe toata durata proiectului, fara a inlocui structura proiectului."
         ],
         muted: true
       }
     ],
     closingEyebrow: "Parteneriat",
     closingTitle: "Orientati spre livrare, claritate si colaborare pe termen lung",
-    closingBody: "Ne propunem sa fim un partener de inginerie pe care echipele tehnice din Romania il pot implica rapid atunci cand proiectele cer ritm si competenta."
+    closingBody: "Ne propunem sa fim un partener tehnic de automatizare pe care echipele din Romania il pot implica rapid atunci cand proiectele cer ritm si competenta. Rolul nostru este de a completa echipele existente, oferind expertiza in automatizare fara a intra in competitie cu partenerii nostri."
   },
   contact: {
     title: "Contact",
@@ -174,7 +174,7 @@ export const roMarket = {
         heroEyebrow: "Serviciu",
         heroTitle: "Proiectare tablouri",
         heroDescription: "Scheme electrice, liste de I/O, planificare de arhitectura si documentatie practica pentru livrare.",
-        intro: "Ajutam constructorii de tablouri si integratorii sa transforme cerintele de proiect in documentatie practica. Asta include scheme electrice, planificare de arhitectura, liste de I/O si suport pentru pregatirea FAT.",
+        intro: "Ajutam constructorii de tablouri si integratorii sa transforme cerintele de proiect in documentatie practica. Asta include scheme electrice, planificare de arhitectura, liste de I/O si suport pentru pregatirea FAT, in colaborare cu echipele implicate in proiect.",
         features: ["Scheme electrice", "Liste I/O si arhitectura", "Pachete de documentatie", "Colaborare cu constructori de tablouri", "Suport FAT"]
       },
       {
@@ -216,13 +216,13 @@ export const roMarket = {
         slug: "pump-systems",
         href: "/industries/pump-systems",
         title: "Sisteme de pompare",
-        body: "Automatizari pentru statii de pompare, crestere de presiune si logica de protectie unde fiabilitatea conteaza.",
+        body: "Suport tehnic pentru automatizarea statiilor de pompare, sistemelor de crestere de presiune si logicii de protectie, acolo unde fiabilitatea conteaza.",
         pageTitle: "Automatizari pentru sisteme de pompare",
         pageDescription: "Programare PLC si suport de automatizare pentru statii de pompare si sisteme booster.",
         heroEyebrow: "Industrie",
         heroTitle: "Sisteme de pompare",
-        heroDescription: "Inginerie de automatizare pentru statii de pompare, sisteme booster si strategii de control care protejeaza echipamentele.",
-        intro: "Automatizarea sistemelor de pompare cere logica stabila, alarme bine gandite si strategii de control practice. Sprijinim proiecte cu control duty-standby, protectii pentru pompe, management de nivel si secventiere pe presiune."
+        heroDescription: "Suport tehnic pentru automatizarea statiilor de pompare, sistemelor booster si strategiilor de control care protejeaza echipamentele.",
+        intro: "Automatizarea sistemelor de pompare cere logica stabila, alarme bine gandite si strategii de control practice. Oferim suport tehnic pentru aceste proiecte, lucrand alaturi de integratori si producatori de tablouri la control duty-standby, protectii pentru pompe, management de nivel si secventiere pe presiune."
       },
       {
         slug: "water-wastewater",
@@ -256,14 +256,14 @@ export const roMarket = {
     heroEyebrow: "Pentru cine lucram",
     heroTitle: "Sprijinim echipe tehnice care au nevoie de capacitate suplimentara in automatizare",
     heroDescription: "Lucram cu firme care au nevoie de suport suplimentar pentru PLC si automatizari astfel incat proiectele sa fie livrate eficient, fara cresterea permanenta a echipei interne.",
-    intro: "Rolul nostru este sa completam echipele existente astfel incat proiectele sa avanseze fluent si la timp.",
+    intro: "Rolul nostru este sa completam echipele existente astfel incat proiectele sa avanseze fluent si la timp, fara a intra in competitie cu partenerii implicati.",
     sections: [
       {
         eyebrow: "Constructori de tablouri",
         title: "Suport de incredere pentru PLC si sisteme de control",
         body: [
-          "Lucram alaturi de constructori de tablouri pentru a oferi programare PLC, dezvoltare HMI si proiectare de sisteme de control.",
-          "Fie ca ai nevoie de suport pe un singur proiect sau de capacitate continua, ne integrăm in modul tau de lucru si ajutam la livrarea unor sisteme complete si functionale."
+          "Colaboram cu producatori de tablouri electrice si integratori de sisteme, oferind suport in dezvoltarea si implementarea sistemelor de automatizare.",
+          "Fie ca ai nevoie de suport pe un singur proiect sau de capacitate continua, ne integram in modul tau de lucru si ajutam la livrarea unor sisteme functionale, fara a inlocui structura proiectului."
         ],
         muted: true
       },
@@ -280,7 +280,7 @@ export const roMarket = {
         title: "Suport specializat pentru automatizari in apa si sisteme de pompare",
         body: [
           "Contribuim cu expertiza in sisteme de control pentru pompe, crestere de presiune, aplicatii de apa uzata si logica de control si protectie.",
-          "De regula facem parte dintr-o echipa extinsa, alaturi de constructori de tablouri, integratori sau contractori, pentru a livra sisteme fiabile."
+          "De regula facem parte dintr-o echipa extinsa, alaturi de constructori de tablouri, integratori sau contractori, pentru a livra sisteme fiabile fara sa preluam proiectul complet."
         ],
         muted: true
       },
@@ -289,13 +289,13 @@ export const roMarket = {
         title: "Un partener flexibil care se integreaza in echipa ta",
         body: [
           "Actionam ca partener flexibil de inginerie, completand echipa existenta in loc sa o inlocuim.",
-          "Ne concentram pe comunicare clara, solutii practice si livrare tehnica predictibila."
+          "Ne concentram pe comunicare clara, implementare practica si livrare tehnica predictibila."
         ]
       }
     ],
     closingEyebrow: "Capacitate suplimentara",
     closingTitle: "Suport PLC si automatizare atunci cand proiectele au nevoie",
-    closingBody: "Daca echipa ta are nevoie de suport suplimentar pentru PLC sau automatizari, putem intra rapid in proiect si ne putem alinia cu fluxul tau de lucru.",
+    closingBody: "Daca echipa ta are nevoie de suport suplimentar pentru PLC sau automatizari, putem intra rapid in proiect si ne putem alinia cu fluxul tau de lucru ca partener tehnic, nu ca inlocuitor al echipei existente.",
     items: [
       {
         slug: "panel-builders",
@@ -325,13 +325,13 @@ export const roMarket = {
         slug: "contractors",
         href: "/who-we-help/contractors",
         title: "Contractori industriali",
-        body: "Proiectam si programam sisteme de control fiabile pentru statii de pompare, sisteme booster si infrastructura de apa.",
+        body: "Oferim suport tehnic pentru automatizarea statiilor de pompare, sistemelor booster si infrastructurii de apa, in colaborare cu echipele implicate in proiect.",
         pageTitle: "Suport pentru contractori",
         pageDescription: "Suport fiabil pentru proiectare de control si programare PLC destinat contractorilor care lucreaza pe proiecte cu pompe si apa.",
         heroEyebrow: "Pentru cine lucram",
         heroTitle: "Contractori",
-        heroDescription: "Ajutam contractorii sa livreze sisteme de control fiabile pentru apa si pompe prin suport practic de automatizare.",
-        intro: "Pentru contractori care livreaza statii de pompare, sisteme de crestere presiune sau infrastructura de apa, oferim proiectare de control, programare PLC si suport la punerea in functiune cu focus pe rezultate stabile."
+        heroDescription: "Ajutam contractorii sa livreze sisteme de control fiabile pentru apa si pompe prin suport practic de automatizare, alaturi de integratori si producatori de tablouri.",
+        intro: "Pentru contractori care livreaza statii de pompare, sisteme de crestere presiune sau infrastructura de apa, oferim suport pentru proiectare de control, programare PLC si punere in functiune cu focus pe rezultate stabile si colaborare buna in echipa."
       }
     ]
   },
