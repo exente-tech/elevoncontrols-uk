@@ -7,7 +7,7 @@ export const roMarket = {
     brandSecondary: "Romania",
     url: "https://www.elevoncontrols.ro",
     domain: "elevoncontrols.ro",
-    email: "info@elevoncontrols.ro",
+    email: "office@elevoncontrols.ro",
     phone: "0728 442 402",
     mobile: "+40 744 168 663",
     address: "Bucuresti, Romania",
@@ -142,7 +142,7 @@ export const roMarket = {
     statusHoneypot: "Multumim. Solicitarea a fost inregistrata.",
     statusMissingEndpoint: "Endpoint-ul formularului de contact nu este configurat.",
     statusRateLimited: "Au fost trimise prea multe solicitari recent. Te rugam sa incerci din nou peste un minut.",
-    statusFallback: "Momentan nu am putut trimite solicitarea. Te rugam sa ne scrii la info@elevoncontrols.ro sau sa incerci din nou in scurt timp."
+    statusFallback: "Momentan nu am putut trimite solicitarea. Te rugam sa ne scrii la office@elevoncontrols.ro sau sa incerci din nou in scurt timp."
   },
   services: {
     overviewTitle: "Servicii de inginerie pentru automatizari",
