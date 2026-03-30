@@ -2,7 +2,12 @@
 import { site } from "../data/site";
 ---
 
-<form class="contact-form" data-endpoint={site.formEndpoint} id="contact-form">
+<form
+  class="contact-form"
+  data-endpoint={site.formEndpoint}
+  data-tenant-name={site.tenantName}
+  id="contact-form"
+>
   <div class="field-grid">
     <label>
       Full name
@@ -86,6 +91,7 @@ import { site } from "../data/site";
 
       const projectType = String(formData.get("project_type") || "General Enquiry");
       const payload = {
+        tenantName: contactForm.dataset.tenantName || "",
         requestType: requestTypeMap[projectType] || "general-enquiry",
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),

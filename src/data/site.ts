@@ -6,6 +6,7 @@ export const site = {
   mobile: "07743 168663",
   address: "92 Castle Street, Area 1/1, Northern Ireland, BT1 1HE",
   location: "92 Castle Street, Area 1/1, Northern Ireland, BT1 1HE",
+  tenantName: "elevon-uk",
   formEndpoint: "https://email.api.exente-tech.com/v1/public/lead-requests"
 };
 
