@@ -1,81 +1,35 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import { market } from "../data/current-market";
+
+const about = market.about;
 ---
 
-<MainLayout
-  title="About"
-  description="About Elevon Controls and our engineering focus."
->
-  <PageHero
-    eyebrow="About Us"
-    title="Automation Engineering with a Practical Delivery Focus"
-    description="Elevon Controls supports industrial automation projects with a focus on PLC programming, control panel design, HMI/SCADA development, and commissioning support."
-  />
+<MainLayout title={about.title} description={about.description}>
+  <PageHero eyebrow={about.heroEyebrow} title={about.heroTitle} description={about.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        We work primarily with panel builders, system integrators, and contractors, providing
-        reliable engineering support that helps teams deliver projects efficiently without
-        increasing internal workload.
-      </p>
+      <p>{about.intro}</p>
     </div>
   </section>
 
-  <section class="section section-muted">
-    <div class="container prose-block">
-      <p class="eyebrow">Our Approach</p>
-      <h2>Clear communication, practical engineering, dependable support</h2>
-      <p>
-        Our approach is straightforward: clear communication, practical engineering solutions, and
-        dependable project support.
-      </p>
-      <p>
-        We focus on delivering work that integrates smoothly into existing projects, avoiding
-        unnecessary complexity and delays.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container prose-block">
-      <p class="eyebrow">Experience &amp; Focus</p>
-      <h2>Strong experience in pump and water-related applications</h2>
-      <p>
-        We bring strong experience in pump systems and water-related applications, including pump
-        stations, pressure boosting systems, wastewater systems, and control and protection logic.
-      </p>
-      <p>
-        This domain knowledge allows us to deliver solutions that are not only functional, but also
-        aligned with real operational requirements.
-      </p>
-    </div>
-  </section>
-
-  <section class="section section-muted">
-    <div class="container prose-block">
-      <p class="eyebrow">How We Work</p>
-      <h2>External automation engineering support across the project lifecycle</h2>
-      <p>
-        We typically support clients as an external automation engineering partner, providing PLC
-        programming, system design, HMI development, and commissioning support.
-      </p>
-      <p>
-        Whether working remotely or alongside your team, our goal is to provide consistent,
-        reliable engineering input throughout the project lifecycle.
-      </p>
-    </div>
-  </section>
+  {about.sections.map((section) => (
+    <section class:list={["section", section.muted && "section-muted"]}>
+      <div class="container prose-block">
+        <p class="eyebrow">{section.eyebrow}</p>
+        <h2>{section.title}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+  ))}
 
   <section class="section cta-band">
     <div class="container prose-block">
-      <p class="eyebrow">Partnership</p>
-      <h2>Focused on delivery, clarity, and long-term collaboration</h2>
-      <p>
-        We aim to be a dependable engineering partner for UK automation projects, focused on
-        delivery, clarity, and long-term collaboration.
-      </p>
+      <p class="eyebrow">{about.closingEyebrow}</p>
+      <h2>{about.closingTitle}</h2>
+      <p>{about.closingBody}</p>
     </div>
   </section>
 </MainLayout>

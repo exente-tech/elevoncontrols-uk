@@ -1,24 +1,18 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const audience = market.audiences.items.find((item) => item.slug === "system-integrators");
+if (!audience) throw new Error("Missing audience content: system-integrators");
 ---
 
-<MainLayout
-  title="Support for System Integrators"
-  description="Flexible automation engineering support for system integrators from design through commissioning."
->
-  <PageHero
-    eyebrow="Who We Help"
-    title="System Integrators"
-    description="We add engineering capacity for automation projects that need reliable delivery support from design through commissioning."
-  />
+<MainLayout title={audience.pageTitle} description={audience.pageDescription}>
+  <PageHero eyebrow={audience.heroEyebrow} title={audience.heroTitle} description={audience.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        When integrators are balancing multiple projects, we can step in with practical PLC, HMI,
-        documentation, and commissioning support that helps keep programmes moving.
-      </p>
+      <p>{audience.intro}</p>
     </div>
   </section>
 </MainLayout>

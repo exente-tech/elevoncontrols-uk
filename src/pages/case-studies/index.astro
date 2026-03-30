@@ -1,18 +1,14 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { caseStudies } from "../../data/site";
+import { market } from "../../data/current-market";
+
+const caseStudiesPage = market.caseStudiesPage;
+const caseStudies = market.caseStudies;
 ---
 
-<MainLayout
-  title="Case Studies"
-  description="Selected automation projects showing PLC programming, panel design, and commissioning support."
->
-  <PageHero
-    eyebrow="Case Studies"
-    title="Recent Projects"
-    description="Simple project stories that show the kind of support we provide and the outcomes clients value."
-  />
+<MainLayout title={caseStudiesPage.title} description={caseStudiesPage.description}>
+  <PageHero eyebrow={caseStudiesPage.heroEyebrow} title={caseStudiesPage.heroTitle} description={caseStudiesPage.heroDescription} />
 
   <section class="section">
     <div class="container card-grid card-grid-three">

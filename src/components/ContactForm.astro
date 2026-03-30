@@ -1,91 +1,94 @@
 ---
-import { site } from "../data/site";
+import { market } from "../data/current-market";
+
+const site = market.site;
+const contactForm = market.contactForm;
 ---
 
 <form
   class="contact-form"
   data-endpoint={site.formEndpoint}
   data-tenant-name={site.tenantName}
+  data-source={contactForm.source}
+  data-default-project-type={contactForm.defaultProjectType}
   id="contact-form"
 >
   <div class="field-grid">
     <label>
-      Full name
+      {contactForm.labels.fullName}
       <input name="name" autocomplete="name" required />
     </label>
 
     <label>
-      Company
+      {contactForm.labels.company}
       <input name="company" autocomplete="organization" />
     </label>
   </div>
 
   <div class="field-grid">
     <label>
-      Email
+      {contactForm.labels.email}
       <input name="email" type="email" autocomplete="email" required />
     </label>
 
     <label>
-      Phone
+      {contactForm.labels.phone}
       <input name="phone" type="tel" autocomplete="tel" />
     </label>
   </div>
 
   <label>
-    Project type
+    {contactForm.labels.projectType}
     <select name="project_type">
-      <option value="PLC Programming">PLC Programming</option>
-      <option value="Control Panel Design">Control Panel Design</option>
-      <option value="Commissioning Support">Commissioning Support</option>
-      <option value="General Enquiry">General Enquiry</option>
+      {contactForm.projectOptions.map((option) => <option value={option}>{option}</option>)}
     </select>
   </label>
 
   <label class="honeypot">
-    Leave this field empty
-    <input name="website" tabindex="-1" autocomplete="off" />
+    {contactForm.labels.honeypot}
+    <input name={contactForm.honeypotName} tabindex="-1" autocomplete="off" />
   </label>
 
   <label>
-    Tell us about your project
+    {contactForm.labels.message}
     <textarea name="message" rows="6" required></textarea>
   </label>
 
   <div class="form-actions">
-    <button class="button button-primary" id="contact-submit" type="submit">Request Support</button>
-    <p class="form-meta">We typically respond within 24 hours. No-obligation consultation.</p>
+    <button class="button button-primary" id="contact-submit" type="submit">{contactForm.submitLabel}</button>
+    <p class="form-meta">{contactForm.meta}</p>
   </div>
 
   <p class="form-status" id="form-status" aria-live="polite"></p>
 </form>
 
 <script>
-  const contactForm = document.getElementById("contact-form");
+  const contactFormElement = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
   const contactSubmit = document.getElementById("contact-submit");
 
-
-  if (contactForm instanceof HTMLFormElement && formStatus) {
-    contactForm.addEventListener("submit", async (event) => {
+  if (contactFormElement instanceof HTMLFormElement && formStatus) {
+    contactFormElement.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!contactForm.reportValidity()) {
+      if (!contactFormElement.reportValidity()) {
         return;
       }
 
-      const formData = new FormData(contactForm);
-      const honeypot = String(formData.get("website") || "").trim();
+      const formData = new FormData(contactFormElement);
+      const honeypotField = String(formData.get("website") || "").trim();
 
-      if (honeypot) {
-        contactForm.reset();
-        formStatus.textContent = "Thanks. Your request has been received.";
+      if (honeypotField) {
+        contactFormElement.reset();
+        formStatus.textContent = contactForm.statusHoneypot;
         return;
       }
 
-      const projectType = String(formData.get("project_type") || "General Enquiry");
+      const projectType = String(
+        formData.get("project_type") || contactFormElement.dataset.defaultProjectType || ""
+      );
       const payload = {
-        tenantName: contactForm.dataset.tenantName || "",
+        tenantName: contactFormElement.dataset.tenantName || "",
         requestType: "contact",
         projectType,
         name: String(formData.get("name") || "").trim(),
@@ -93,23 +96,23 @@ import { site } from "../data/site";
         company: String(formData.get("company") || "").trim(),
         phone: String(formData.get("phone") || "").trim(),
         message: String(formData.get("message") || "").trim(),
-        source: "website-contact-form",
+        source: contactFormElement.dataset.source || "website-contact-form",
         page: window.location.href
       };
 
-      const endpoint = contactForm.dataset.endpoint;
+      const endpoint = contactFormElement.dataset.endpoint;
 
       if (!endpoint) {
-        formStatus.textContent = "Contact form endpoint is not configured.";
+        formStatus.textContent = contactForm.statusMissingEndpoint;
         return;
       }
 
       if (contactSubmit instanceof HTMLButtonElement) {
         contactSubmit.disabled = true;
-        contactSubmit.textContent = "Submitting...";
+        contactSubmit.textContent = contactForm.submitPendingLabel;
       }
 
-      formStatus.textContent = "Submitting inquiry...";
+      formStatus.textContent = contactForm.statusSubmitting;
 
       try {
         const response = await fetch(endpoint, {
@@ -117,7 +120,7 @@ import { site } from "../data/site";
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            Accept: "application/json"
           },
           body: JSON.stringify(payload)
         });
@@ -140,27 +143,26 @@ import { site } from "../data/site";
           throw new Error(responseData.message || "The API did not accept the inquiry.");
         }
 
-        contactForm.reset();
-        formStatus.textContent = "Inquiry submitted successfully. We will review it shortly.";
+        contactFormElement.reset();
+        formStatus.textContent = contactForm.statusSuccess;
       } catch (error) {
         console.error("Inquiry submission failed:", error);
 
         const errorMessage = error instanceof Error ? error.message : "";
 
         if (errorMessage.startsWith("429:")) {
-          formStatus.textContent = "Too many submissions were sent recently. Please wait a minute and try again.";
+          formStatus.textContent = contactForm.statusRateLimited;
         } else if (errorMessage) {
           formStatus.textContent = errorMessage.includes(":")
             ? errorMessage.split(":").slice(1).join(":").trim()
             : errorMessage;
         } else {
-          formStatus.textContent =
-            "We could not submit your inquiry right now. Please email info@elevoncontrols.co.uk or try again shortly.";
+          formStatus.textContent = contactForm.statusFallback;
         }
       } finally {
         if (contactSubmit instanceof HTMLButtonElement) {
           contactSubmit.disabled = false;
-          contactSubmit.textContent = "Request Support";
+          contactSubmit.textContent = contactForm.submitLabel;
         }
       }
     });

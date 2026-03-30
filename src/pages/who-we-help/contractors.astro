@@ -1,25 +1,18 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const audience = market.audiences.items.find((item) => item.slug === "contractors");
+if (!audience) throw new Error("Missing audience content: contractors");
 ---
 
-<MainLayout
-  title="Support for Contractors"
-  description="Reliable control system design and PLC programming support for contractors working on pump and water projects."
->
-  <PageHero
-    eyebrow="Who We Help"
-    title="Contractors"
-    description="We help contractors deliver dependable pump and water control systems with practical automation support."
-  />
+<MainLayout title={audience.pageTitle} description={audience.pageDescription}>
+  <PageHero eyebrow={audience.heroEyebrow} title={audience.heroTitle} description={audience.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        For contractors delivering pump stations, booster systems, or water infrastructure, we
-        provide control system design, PLC programming, and commissioning help focused on reliable
-        outcomes.
-      </p>
+      <p>{audience.intro}</p>
     </div>
   </section>
 </MainLayout>

@@ -1,25 +1,18 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const industry = market.industries.items.find((item) => item.slug === "pump-systems");
+if (!industry) throw new Error("Missing industry content: pump-systems");
 ---
 
-<MainLayout
-  title="Pump Systems Automation"
-  description="PLC programming and automation support for pump stations and pressure boosting systems."
->
-  <PageHero
-    eyebrow="Industry"
-    title="Pump Systems"
-    description="Automation engineering for pumping stations, booster systems, and control strategies that protect assets and improve reliability."
-  />
+<MainLayout title={industry.pageTitle} description={industry.pageDescription}>
+  <PageHero eyebrow={industry.heroEyebrow} title={industry.heroTitle} description={industry.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        Pump system automation needs stable logic, good alarm handling, and practical control
-        strategies. We support projects involving duty and standby control, pump protection, level
-        management, and pressure-based sequencing.
-      </p>
+      <p>{industry.intro}</p>
     </div>
   </section>
 </MainLayout>

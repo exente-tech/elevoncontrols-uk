@@ -1,24 +1,18 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const industry = market.industries.items.find((item) => item.slug === "industrial-processes");
+if (!industry) throw new Error("Missing industry content: industrial-processes");
 ---
 
-<MainLayout
-  title="Industrial Process Automation"
-  description="Automation support for industrial process projects that need practical engineering delivery."
->
-  <PageHero
-    eyebrow="Industry"
-    title="Industrial Processes"
-    description="Selected industrial process applications where teams need straightforward PLC, HMI, and commissioning support."
-  />
+<MainLayout title={industry.pageTitle} description={industry.pageDescription}>
+  <PageHero eyebrow={industry.heroEyebrow} title={industry.heroTitle} description={industry.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        We work on industrial automation projects that need reliable delivery, clear documentation,
-        and engineering support that plugs into the wider project team without adding overhead.
-      </p>
+      <p>{industry.intro}</p>
     </div>
   </section>
 </MainLayout>

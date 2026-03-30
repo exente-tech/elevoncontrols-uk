@@ -1,32 +1,23 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const service = market.services.items.find((item) => item.slug === "plc-programming");
+if (!service) throw new Error("Missing service content: plc-programming");
 ---
 
-<MainLayout
-  title="PLC Programming"
-  description="PLC programming support for Siemens, Codesys, and Allen-Bradley systems."
->
-  <PageHero
-    eyebrow="Service"
-    title="PLC Programming"
-    description="Programming support for new systems, upgrades, troubleshooting, and control sequence optimisation."
-  />
+<MainLayout title={service.pageTitle} description={service.pageDescription}>
+  <PageHero eyebrow={service.heroEyebrow} title={service.heroTitle} description={service.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        We support automation projects with PLC software development that is clear, maintainable,
-        and aligned with real operating conditions. Our work covers new systems, retrofit projects,
-        and sequence adjustments needed during delivery.
-      </p>
-      <ul class="feature-list feature-list-inline">
-        <li>Siemens</li>
-        <li>Codesys</li>
-        <li>Allen-Bradley</li>
-        <li>New systems and upgrades</li>
-        <li>Troubleshooting and optimisation</li>
-      </ul>
+      <p>{service.intro}</p>
+      {service.features && (
+        <ul class="feature-list feature-list-inline">
+          {service.features.map((item) => <li>{item}</li>)}
+        </ul>
+      )}
     </div>
   </section>
 </MainLayout>

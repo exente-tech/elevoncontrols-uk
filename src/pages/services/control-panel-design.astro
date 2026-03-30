@@ -1,32 +1,23 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const service = market.services.items.find((item) => item.slug === "control-panel-design");
+if (!service) throw new Error("Missing service content: control-panel-design");
 ---
 
-<MainLayout
-  title="Control Panel Design"
-  description="Control panel design, schematics, I/O planning, and documentation support."
->
-  <PageHero
-    eyebrow="Service"
-    title="Control Panel Design"
-    description="Electrical schematics, I/O lists, architecture planning, and practical documentation that supports delivery."
-  />
+<MainLayout title={service.pageTitle} description={service.pageDescription}>
+  <PageHero eyebrow={service.heroEyebrow} title={service.heroTitle} description={service.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        We help panel builders and integrators translate project requirements into practical control
-        panel documentation. That includes electrical schematics, architecture planning, I/O lists,
-        and support for FAT preparation.
-      </p>
-      <ul class="feature-list feature-list-inline">
-        <li>Electrical schematics</li>
-        <li>I/O lists and architecture</li>
-        <li>Documentation packs</li>
-        <li>Panel builder collaboration</li>
-        <li>FAT support</li>
-      </ul>
+      <p>{service.intro}</p>
+      {service.features && (
+        <ul class="feature-list feature-list-inline">
+          {service.features.map((item) => <li>{item}</li>)}
+        </ul>
+      )}
     </div>
   </section>
 </MainLayout>

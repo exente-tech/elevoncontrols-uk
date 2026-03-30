@@ -1,11 +1,15 @@
 {
-  "name": "elevon-uk-marketing-site",
+  "name": "elevon-marketing-site",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "select:uk": "node scripts/select-market.mjs uk",
+    "select:ro": "node scripts/select-market.mjs ro",
+    "finalize:uk": "node scripts/finalize-market-build.mjs uk",
+    "finalize:ro": "node scripts/finalize-market-build.mjs ro",
     "preview": "astro preview",
     "check": "astro check"
   },

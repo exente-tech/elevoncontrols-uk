@@ -1,32 +1,23 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
+import { market } from "../../data/current-market";
+
+const service = market.services.items.find((item) => item.slug === "commissioning-support");
+if (!service) throw new Error("Missing service content: commissioning-support");
 ---
 
-<MainLayout
-  title="Commissioning & Support"
-  description="Remote and on-site commissioning support, troubleshooting, and technical delivery support."
->
-  <PageHero
-    eyebrow="Service"
-    title="Commissioning & Support"
-    description="Flexible support when projects need troubleshooting, final adjustments, and dependable engineering input."
-  />
+<MainLayout title={service.pageTitle} description={service.pageDescription}>
+  <PageHero eyebrow={service.heroEyebrow} title={service.heroTitle} description={service.heroDescription} />
 
   <section class="section">
     <div class="container prose-block">
-      <p>
-        Commissioning often needs fast, experienced support to keep delivery on track. We provide
-        practical diagnostics, control logic updates, and technical assistance during final project
-        stages.
-      </p>
-      <ul class="feature-list feature-list-inline">
-        <li>Remote commissioning</li>
-        <li>On-site support</li>
-        <li>Diagnostics and troubleshooting</li>
-        <li>Final control sequence changes</li>
-        <li>Ongoing technical support</li>
-      </ul>
+      <p>{service.intro}</p>
+      {service.features && (
+        <ul class="feature-list feature-list-inline">
+          {service.features.map((item) => <li>{item}</li>)}
+        </ul>
+      )}
     </div>
   </section>
 </MainLayout>

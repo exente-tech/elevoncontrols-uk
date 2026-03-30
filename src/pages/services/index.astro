@@ -1,22 +1,17 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { serviceCards } from "../../data/site";
+import { market } from "../../data/current-market";
+
+const services = market.services;
 ---
 
-<MainLayout
-  title="Automation Engineering Services"
-  description="PLC programming, control panel design, HMI and SCADA development, and commissioning support."
->
-  <PageHero
-    eyebrow="Services"
-    title="Automation Engineering Services"
-    description="Practical support for UK automation projects, from control system design through final commissioning."
-  />
+<MainLayout title={services.overviewTitle} description={services.overviewDescription}>
+  <PageHero eyebrow={services.heroEyebrow} title={services.heroTitle} description={services.heroDescription} />
 
   <section class="section">
     <div class="container card-grid card-grid-two">
-      {serviceCards.map((service) => (
+      {services.items.map((service) => (
         <a class="info-card info-card-strong" href={service.href}>
           <h2>{service.title}</h2>
           <p>{service.body}</p>

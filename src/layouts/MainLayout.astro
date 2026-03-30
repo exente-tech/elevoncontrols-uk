@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { navigation, site } from "../data/site";
+import { market } from "../data/current-market";
 
 interface Props {
   title: string;
@@ -9,10 +9,13 @@ interface Props {
 
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
+const site = market.site;
+const navigation = market.navigation;
+const footer = market.footer;
 ---
 
 <!doctype html>
-<html lang="en-GB">
+<html lang={market.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,8 +35,8 @@ const path = Astro.url.pathname;
         <a class="brand" href="/">
           <span class="brand-mark" aria-hidden="true"></span>
           <span>
-            <strong>Elevon</strong>
-            <small>Controls</small>
+            <strong>{site.brandPrimary}</strong>
+            <small>{site.brandSecondary}</small>
           </span>
         </a>
 
@@ -45,7 +48,7 @@ const path = Astro.url.pathname;
           ))}
         </nav>
 
-        <a class="button button-primary nav-cta" href="/contact">Request Support</a>
+        <a class="button button-primary nav-cta" href="/contact">{footer.navCtaLabel}</a>
       </div>
     </header>
 
@@ -59,32 +62,31 @@ const path = Astro.url.pathname;
           <a class="brand brand-footer" href="/">
             <span class="brand-mark" aria-hidden="true"></span>
             <span>
-              <strong>Elevon</strong>
-              <small>Controls</small>
+              <strong>{site.brandPrimary}</strong>
+              <small>{site.brandSecondary}</small>
             </span>
           </a>
-          <p class="footer-copy">
-            PLC programming, control panel design, and commissioning support for UK automation projects.
-          </p>
+          <p class="footer-copy">{footer.summary}</p>
         </div>
 
         <div>
-          <h3>Company</h3>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/industries">Industries</a>
+          <h3>{footer.companyHeading}</h3>
+          {navigation.slice(4).map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+          <a href="/services">{navigation[1].label}</a>
+          <a href="/industries">{navigation[2].label}</a>
         </div>
 
         <div>
-          <h3>Services</h3>
-          <a href="/services/plc-programming">PLC Programming</a>
-          <a href="/services/control-panel-design">Control Panel Design</a>
-          <a href="/services/hmi-scada">HMI &amp; SCADA</a>
-          <a href="/services/commissioning-support">Commissioning</a>
+          <h3>{footer.servicesHeading}</h3>
+          {footer.serviceLinks.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
         </div>
 
         <div>
-          <h3>Contact</h3>
+          <h3>{footer.contactHeading}</h3>
           <a href={`mailto:${site.email}`}>{site.email}</a>
           <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a>
           <a href={`tel:${site.mobile.replace(/[^+\d]/g, "")}`}>{site.mobile}</a>
@@ -93,7 +95,7 @@ const path = Astro.url.pathname;
       </div>
 
       <div class="container footer-bottom">
-        <p>&copy; 2026 {site.name}. Industrial automation engineering.</p>
+        <p>&copy; 2026 {site.name}. {footer.copyright}</p>
       </div>
     </footer>
   </body>
