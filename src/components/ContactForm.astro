@@ -130,7 +130,10 @@ import { site } from "../data/site";
         }
 
         if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`);
+          const apiMessage = responseData && typeof responseData.message === "string"
+            ? responseData.message
+            : "Request failed.";
+          throw new Error(`${response.status}: ${apiMessage}`);
         }
 
         if (responseData && responseData.success === false) {
@@ -141,8 +144,19 @@ import { site } from "../data/site";
         formStatus.textContent = "Inquiry submitted successfully. We will review it shortly.";
       } catch (error) {
         console.error("Inquiry submission failed:", error);
-        formStatus.textContent =
-          "We could not submit your inquiry right now. Please email info@elevoncontrols.co.uk or try again shortly.";
+
+        const errorMessage = error instanceof Error ? error.message : "";
+
+        if (errorMessage.startsWith("429:")) {
+          formStatus.textContent = "Too many submissions were sent recently. Please wait a minute and try again.";
+        } else if (errorMessage) {
+          formStatus.textContent = errorMessage.includes(":")
+            ? errorMessage.split(":").slice(1).join(":").trim()
+            : errorMessage;
+        } else {
+          formStatus.textContent =
+            "We could not submit your inquiry right now. Please email info@elevoncontrols.co.uk or try again shortly.";
+        }
       } finally {
         if (contactSubmit instanceof HTMLButtonElement) {
           contactSubmit.disabled = false;
