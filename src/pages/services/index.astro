@@ -1,0 +1,27 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { serviceCards } from "../../data/site";
+---
+
+<MainLayout
+  title="Automation Engineering Services"
+  description="PLC programming, control panel design, HMI and SCADA development, and commissioning support."
+>
+  <PageHero
+    eyebrow="Services"
+    title="Automation Engineering Services"
+    description="Practical support for UK automation projects, from control system design through final commissioning."
+  />
+
+  <section class="section">
+    <div class="container card-grid card-grid-two">
+      {serviceCards.map((service) => (
+        <a class="info-card info-card-strong" href={service.href}>
+          <h2>{service.title}</h2>
+          <p>{service.body}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</MainLayout>

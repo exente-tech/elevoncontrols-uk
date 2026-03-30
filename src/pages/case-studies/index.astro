@@ -1,0 +1,28 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { caseStudies } from "../../data/site";
+---
+
+<MainLayout
+  title="Case Studies"
+  description="Selected automation projects showing PLC programming, panel design, and commissioning support."
+>
+  <PageHero
+    eyebrow="Case Studies"
+    title="Recent Projects"
+    description="Simple project stories that show the kind of support we provide and the outcomes clients value."
+  />
+
+  <section class="section">
+    <div class="container card-grid card-grid-three">
+      {caseStudies.map((item) => (
+        <article class="info-card">
+          <h2>{item.title}</h2>
+          <p>{item.summary}</p>
+          <p class="result-copy">{item.result}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</MainLayout>

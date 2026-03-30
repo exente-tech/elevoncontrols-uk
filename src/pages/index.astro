@@ -1,0 +1,169 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { audiences, caseStudies, serviceCards } from "../data/site";
+---
+
+<MainLayout
+  title="PLC Programming & Automation Support for Pump Systems"
+  description="Supporting UK panel builders, system integrators, and contractors with PLC programming, control panel design, and commissioning."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Industrial Automation &amp; PLC Engineering</p>
+        <h1>PLC Programming &amp; Automation Support for Pump Systems and Industrial Applications</h1>
+        <p class="hero-copy">
+          We support UK panel builders, system integrators, and contractors with PLC programming,
+          control panel design, and commissioning, delivered reliably and on time.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/contact">Request PLC Support</a>
+          <a class="button button-secondary" href="/contact">Book a Call</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="signal-card">
+          <span>Focused Expertise</span>
+          <strong>Pump stations, water infrastructure, SCADA, and commissioning support.</strong>
+        </div>
+        <div class="metric-grid">
+          <article>
+            <strong>PLC</strong>
+            <p>Siemens, Codesys, Allen-Bradley</p>
+          </article>
+          <article>
+            <strong>Delivery</strong>
+            <p>Design through commissioning</p>
+          </article>
+          <article>
+            <strong>Support</strong>
+            <p>Remote and on-site when needed</p>
+          </article>
+          <article>
+            <strong>Focus</strong>
+            <p>UK engineering teams with tight deadlines</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container trust-items">
+      <span>Siemens</span>
+      <span>Codesys</span>
+      <span>Allen-Bradley</span>
+      <span>SCADA</span>
+      <span>HMI</span>
+      <span>Industrial Automation</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Who We Help</p>
+        <h2>Supporting UK Engineering Teams That Need Reliable Automation Expertise</h2>
+      </div>
+      <div class="card-grid card-grid-three">
+        {audiences.map((audience) => (
+          <a class="info-card" href={audience.href}>
+            <h3>{audience.title}</h3>
+            <p>{audience.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h2>Automation Engineering Services</h2>
+      </div>
+      <div class="card-grid card-grid-two">
+        {serviceCards.map((service) => (
+          <a class="info-card info-card-strong" href={service.href}>
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section specialization">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow">Specialisation</p>
+        <h2>Specialists in Pump &amp; Water Automation</h2>
+        <p>
+          We bring strong experience in pump systems and water infrastructure, helping clients
+          design reliable and efficient control systems that are practical to operate and maintain.
+        </p>
+      </div>
+
+      <ul class="feature-list">
+        <li>Pump stations</li>
+        <li>Pressure boosting systems</li>
+        <li>Wastewater applications</li>
+        <li>Level and flow control</li>
+        <li>Pump protection logic</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Why Work With Us</p>
+        <h2>Why UK Companies Work With Us</h2>
+      </div>
+      <div class="check-grid">
+        <div>Reliable project delivery</div>
+        <div>Flexible engineering support</div>
+        <div>Strong PLC and control systems expertise</div>
+        <div>Experience in water and pump systems</div>
+        <div>Clear communication and documentation</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Recent Projects</p>
+        <h2>Case Studies That Show Practical Delivery</h2>
+      </div>
+      <div class="card-grid card-grid-three">
+        {caseStudies.slice(0, 3).map((item) => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+            <p class="result-copy">{item.result}</p>
+          </article>
+        ))}
+      </div>
+      <a class="text-link" href="/case-studies">View all projects</a>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container cta-shell">
+      <div>
+        <p class="eyebrow">Next Project</p>
+        <h2>Need Support on Your Next Automation Project?</h2>
+        <p>
+          Whether you need PLC programming, control panel design, or commissioning support, we are
+          ready to help.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/contact">Request Support</a>
+        <a class="button button-secondary" href="/contact">Book a Call</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

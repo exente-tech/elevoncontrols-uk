@@ -1,0 +1,153 @@
+---
+import { site } from "../data/site";
+---
+
+<form class="contact-form" data-endpoint={site.formEndpoint} id="contact-form">
+  <div class="field-grid">
+    <label>
+      Full name
+      <input name="name" autocomplete="name" required />
+    </label>
+
+    <label>
+      Company
+      <input name="company" autocomplete="organization" />
+    </label>
+  </div>
+
+  <div class="field-grid">
+    <label>
+      Email
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+
+    <label>
+      Phone
+      <input name="phone" type="tel" autocomplete="tel" />
+    </label>
+  </div>
+
+  <label>
+    Project type
+    <select name="project_type">
+      <option value="PLC Programming">PLC Programming</option>
+      <option value="Control Panel Design">Control Panel Design</option>
+      <option value="Commissioning Support">Commissioning Support</option>
+      <option value="General Enquiry">General Enquiry</option>
+    </select>
+  </label>
+
+  <label class="honeypot">
+    Leave this field empty
+    <input name="website" tabindex="-1" autocomplete="off" />
+  </label>
+
+  <label>
+    Tell us about your project
+    <textarea name="message" rows="6" required></textarea>
+  </label>
+
+  <div class="form-actions">
+    <button class="button button-primary" id="contact-submit" type="submit">Request Support</button>
+    <p class="form-meta">We typically respond within 24 hours. No-obligation consultation.</p>
+  </div>
+
+  <p class="form-status" id="form-status" aria-live="polite"></p>
+</form>
+
+<script>
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
+  const contactSubmit = document.getElementById("contact-submit");
+
+  const requestTypeMap = {
+    "PLC Programming": "plc-programming",
+    "Control Panel Design": "control-panel-design",
+    "Commissioning Support": "commissioning-support",
+    "General Enquiry": "general-enquiry"
+  };
+
+  if (contactForm instanceof HTMLFormElement && formStatus) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) {
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      const honeypot = String(formData.get("website") || "").trim();
+
+      if (honeypot) {
+        contactForm.reset();
+        formStatus.textContent = "Thanks. Your request has been received.";
+        return;
+      }
+
+      const projectType = String(formData.get("project_type") || "General Enquiry");
+      const payload = {
+        requestType: requestTypeMap[projectType] || "general-enquiry",
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        company: String(formData.get("company") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        source: "website-contact-form",
+        page: window.location.href
+      };
+
+      const endpoint = contactForm.dataset.endpoint;
+
+      if (!endpoint) {
+        formStatus.textContent = "Contact form endpoint is not configured.";
+        return;
+      }
+
+      if (contactSubmit instanceof HTMLButtonElement) {
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = "Submitting...";
+      }
+
+      formStatus.textContent = "Submitting inquiry...";
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        let responseData = null;
+        try {
+          responseData = await response.json();
+        } catch {
+          responseData = null;
+        }
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        if (responseData && responseData.success === false) {
+          throw new Error(responseData.message || "The API did not accept the inquiry.");
+        }
+
+        contactForm.reset();
+        formStatus.textContent = "Inquiry submitted successfully. We will review it shortly.";
+      } catch (error) {
+        console.error("Inquiry submission failed:", error);
+        formStatus.textContent =
+          "We could not submit your inquiry right now. Please email info@elevon.co.uk or try again shortly.";
+      } finally {
+        if (contactSubmit instanceof HTMLButtonElement) {
+          contactSubmit.disabled = false;
+          contactSubmit.textContent = "Request Support";
+        }
+      }
+    });
+  }
+</script>

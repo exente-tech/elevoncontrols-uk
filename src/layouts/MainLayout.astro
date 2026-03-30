@@ -1,0 +1,100 @@
+---
+import "../styles/global.css";
+import { navigation, site } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} | {site.name}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>Elevon</strong>
+            <small>Controls</small>
+          </span>
+        </a>
+
+        <nav class="nav">
+          {navigation.map((item) => (
+            <a class:list={["nav-link", path === item.href && "is-active"]} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <a class="button button-primary nav-cta" href="/contact">Request Support</a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand brand-footer" href="/">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>
+              <strong>Elevon</strong>
+              <small>Controls</small>
+            </span>
+          </a>
+          <p class="footer-copy">
+            PLC programming, control panel design, and commissioning support for UK automation projects.
+          </p>
+        </div>
+
+        <div>
+          <h3>Company</h3>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/industries">Industries</a>
+        </div>
+
+        <div>
+          <h3>Services</h3>
+          <a href="/services/plc-programming">PLC Programming</a>
+          <a href="/services/control-panel-design">Control Panel Design</a>
+          <a href="/services/hmi-scada">HMI &amp; SCADA</a>
+          <a href="/services/commissioning-support">Commissioning</a>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a>
+          <a href={`tel:${site.mobile.replace(/[^+\d]/g, "")}`}>{site.mobile}</a>
+          <p>{site.address}</p>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>&copy; 2026 {site.name}. Industrial automation engineering.</p>
+      </div>
+    </footer>
+  </body>
+</html>

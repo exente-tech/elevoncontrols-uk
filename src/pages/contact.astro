@@ -1,0 +1,31 @@
+---
+import ContactForm from "../components/ContactForm.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { site } from "../data/site";
+---
+
+<MainLayout
+  title="Contact"
+  description="Contact Elevon Controls to discuss PLC programming, control panel design, or commissioning support."
+>
+  <section class="page-hero">
+    <div class="container contact-hero-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h1>Discuss Your Next Automation Project</h1>
+        <p class="page-hero-copy">
+          Whether you need PLC programming, control panel design, or commissioning support, we are
+          ready to help.
+        </p>
+        <div class="contact-details">
+          <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p><strong>Phone:</strong> <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a></p>
+          <p><strong>Mobile:</strong> <a href={`tel:${site.mobile.replace(/[^+\d]/g, "")}`}>{site.mobile}</a></p>
+          <p><strong>Address:</strong> {site.address}</p>
+        </div>
+      </div>
+
+      <ContactForm />
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,27 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { industries } from "../../data/site";
+---
+
+<MainLayout
+  title="Industries"
+  description="Automation support for pump systems, water and wastewater, and industrial processes."
+>
+  <PageHero
+    eyebrow="Industries"
+    title="Focused Industry Experience"
+    description="We keep the positioning specific: pump systems, water and wastewater, and selected industrial process applications."
+  />
+
+  <section class="section">
+    <div class="container card-grid card-grid-three">
+      {industries.map((industry) => (
+        <a class="info-card" href={industry.href}>
+          <h2>{industry.title}</h2>
+          <p>{industry.body}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</MainLayout>
