@@ -62,7 +62,7 @@ const contactForm = market.contactForm;
   <p class="form-status" id="form-status" aria-live="polite"></p>
 </form>
 
-<script>
+<script define:vars={{ contactForm }}>
   const contactFormElement = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
   const contactSubmit = document.getElementById("contact-submit");
