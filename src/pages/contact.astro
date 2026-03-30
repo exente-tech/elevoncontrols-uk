@@ -17,7 +17,6 @@ const contact = market.contact;
         <div class="contact-details">
           <p><strong>{contact.labels.email}:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
           <p><strong>{contact.labels.phone}:</strong> <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`}>{site.phone}</a></p>
-          <p><strong>{contact.labels.mobile}:</strong> <a href={`tel:${site.mobile.replace(/[^+\d]/g, "")}`}>{site.mobile}</a></p>
           <p><strong>{contact.labels.address}:</strong> {site.address}</p>
         </div>
       </div>

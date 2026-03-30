@@ -118,7 +118,7 @@ export const ukMarket = {
     eyebrow: "Contact",
     heading: "Discuss Your Next Automation Project",
     body: "Whether you need PLC programming, control panel design, or commissioning support, we are ready to help.",
-    labels: { email: "Email", phone: "Phone", mobile: "Mobile", address: "Address" }
+    labels: { email: "Email", phone: "Phone", address: "Address" }
   },
   contactForm: {
     labels: {

@@ -118,7 +118,7 @@ export const roMarket = {
     eyebrow: "Contact",
     heading: "Hai sa discutam despre urmatorul tau proiect de automatizare",
     body: "Daca ai nevoie de programare PLC, proiectare de tablouri sau suport la punerea in functiune, suntem gata sa ajutam.",
-    labels: { email: "Email", phone: "Telefon", mobile: "Mobil", address: "Adresa" }
+    labels: { email: "Email", phone: "Telefon", address: "Adresa" }
   },
   contactForm: {
     labels: {
