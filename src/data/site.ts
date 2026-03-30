@@ -1,7 +1,7 @@
 export const site = {
   name: "Elevon Controls",
   url: "https://www.elevoncontrols.co.uk",
-  email: "info@elevon.co.uk",
+  email: "info@elevoncontrols.co.uk",
   phone: "028 9620 5401",
   mobile: "07743 168663",
   address: "92 Castle Street, Area 1/1, Northern Ireland, BT1 1HE",
