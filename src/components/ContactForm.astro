@@ -65,12 +65,6 @@ import { site } from "../data/site";
   const formStatus = document.getElementById("form-status");
   const contactSubmit = document.getElementById("contact-submit");
 
-  const requestTypeMap = {
-    "PLC Programming": "plc-programming",
-    "Control Panel Design": "control-panel-design",
-    "Commissioning Support": "commissioning-support",
-    "General Enquiry": "general-enquiry"
-  };
 
   if (contactForm instanceof HTMLFormElement && formStatus) {
     contactForm.addEventListener("submit", async (event) => {
@@ -92,7 +86,8 @@ import { site } from "../data/site";
       const projectType = String(formData.get("project_type") || "General Enquiry");
       const payload = {
         tenantName: contactForm.dataset.tenantName || "",
-        requestType: requestTypeMap[projectType] || "general-enquiry",
+        requestType: "contact",
+        projectType,
         name: String(formData.get("name") || "").trim(),
         email: String(formData.get("email") || "").trim(),
         company: String(formData.get("company") || "").trim(),
