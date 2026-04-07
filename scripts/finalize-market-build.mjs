@@ -3,7 +3,7 @@ import path from "node:path";
 
 const market = (process.argv[2] ?? "uk").toLowerCase() === "ro" ? "ro" : "uk";
 const domains = {
-  uk: "elevoncontrols.co.uk",
+  uk: "www.elevoncontrols.co.uk",
   ro: "elevoncontrols.ro"
 };
 
