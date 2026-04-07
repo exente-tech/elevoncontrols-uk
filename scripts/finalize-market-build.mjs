@@ -1,12 +1,9 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { defaultMarket, marketDomains, normalizeMarket } from "./market-config.mjs";
 
-const market = (process.argv[2] ?? "uk").toLowerCase() === "ro" ? "ro" : "uk";
-const domains = {
-  uk: "www.elevoncontrols.co.uk",
-  ro: "elevoncontrols.ro"
-};
+const market = normalizeMarket(process.argv[2] ?? defaultMarket);
 
 await mkdir(path.join(process.cwd(), "dist"), { recursive: true });
-await writeFile(path.join(process.cwd(), "dist", "CNAME"), `${domains[market]}\n`, "utf8");
+await writeFile(path.join(process.cwd(), "dist", "CNAME"), `${marketDomains[market]}\n`, "utf8");
 await writeFile(path.join(process.cwd(), "dist", ".nojekyll"), "", "utf8");

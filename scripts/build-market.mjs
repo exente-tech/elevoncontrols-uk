@@ -1,24 +1,15 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { execSync } from "node:child_process";
 import path from "node:path";
+import { defaultMarket, marketDomains, marketSiteUrls, normalizeMarket } from "./market-config.mjs";
 
-const market = (process.argv[2] ?? process.env.PUBLIC_MARKET ?? "uk").toLowerCase() === "ro" ? "ro" : "uk";
-const defaults = {
-  uk: {
-    siteUrl: "https://www.elevoncontrols.co.uk",
-    domain: "elevoncontrols.co.uk"
-  },
-  ro: {
-    siteUrl: "https://www.elevoncontrols.ro",
-    domain: "elevoncontrols.ro"
-  }
-};
+const market = normalizeMarket(process.argv[2] ?? process.env.PUBLIC_MARKET ?? defaultMarket);
 
 const env = {
   ...process.env,
   PUBLIC_MARKET: market,
-  SITE_URL: process.env.SITE_URL ?? defaults[market].siteUrl,
-  CNAME_DOMAIN: process.env.CNAME_DOMAIN ?? defaults[market].domain
+  SITE_URL: process.env.SITE_URL ?? marketSiteUrls[market],
+  CNAME_DOMAIN: process.env.CNAME_DOMAIN ?? marketDomains[market]
 };
 
 execSync("npm run build", {

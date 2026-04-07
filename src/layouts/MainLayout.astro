@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { market } from "../data/current-market";
+import { marketKeys, markets } from "../data/markets";
 
 interface Props {
   title: string;
@@ -12,6 +13,11 @@ const path = Astro.url.pathname;
 const site = market.site;
 const navigation = market.navigation;
 const footer = market.footer;
+const canonicalUrl = new URL(path, `${site.url}/`).toString();
+const alternateMarkets = marketKeys.map((key) => ({
+  lang: markets[key].lang,
+  href: new URL(path, `${markets[key].site.url}/`).toString()
+}));
 ---
 
 <!doctype html>
@@ -21,6 +27,16 @@ const footer = market.footer;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
+    {alternateMarkets.map((item) => <link rel="alternate" hreflang={item.lang} href={item.href} />)}
+    <meta property="og:title" content={`${title} | ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={market.lang} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ${site.name}`} />
+    <meta name="twitter:description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

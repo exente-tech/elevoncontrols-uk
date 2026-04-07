@@ -11,6 +11,7 @@ on:
         options:
           - uk
           - ro
+          - de
       target_repo:
         description: owner/repo of the Pages deployment repository
         required: true

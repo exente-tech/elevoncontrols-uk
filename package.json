@@ -8,8 +8,10 @@
     "build": "astro build",
     "select:uk": "node scripts/select-market.mjs uk",
     "select:ro": "node scripts/select-market.mjs ro",
+    "select:de": "node scripts/select-market.mjs de",
     "finalize:uk": "node scripts/finalize-market-build.mjs uk",
     "finalize:ro": "node scripts/finalize-market-build.mjs ro",
+    "finalize:de": "node scripts/finalize-market-build.mjs de",
     "preview": "astro preview",
     "check": "astro check"
   },
